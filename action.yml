@@ -1,6 +1,5 @@
-name: 'test45'
-author: 'Kevin Li'
-description: 'test lib'
+name: 'Docker Build'
+description: 'build image, push image (optional)'
 
 inputs:
   registry:
