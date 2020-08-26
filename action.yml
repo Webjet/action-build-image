@@ -37,7 +37,6 @@ runs:
         export INPUT_TAG=$TAG
         export INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
         export INPUT_FLAG_PUSH=${{ inputs.push }}
-        chmod +x $GITHUB_ACTION_PATH/build.sh
         $GITHUB_ACTION_PATH/build.sh
       shell: bash
 
