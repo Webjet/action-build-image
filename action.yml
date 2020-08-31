@@ -5,15 +5,13 @@ inputs:
   registry:
     description: 'docker registry'
     required: true
-    default: 'containerregistrydev.azurecr.io'
+    default: $CONTAINERREGISTRY
   registry-subpath:
     description: 'registry subpath'
-    required: true
-    default: 'webjet'  
+    required: true  
   image-name:
     description: 'docker image name'
     required: true
-    default: 'webjet-github'
   build-args:
     description: 'docker build args'
     required: false
