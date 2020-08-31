@@ -31,13 +31,13 @@ runs:
     - run: |
         GITHUBSHA=${{ github.sha }}
         TAG=$(echo $GITHUBSHA | cut -c1-6)
+        echo "::set-env name=TAG::$TAG"
         export INPUT_REGISTRY=${{ inputs.registry }}
         export INPUT_BUILDARGS=${{ inputs.build-args }}
         export INPUT_IMAGENAME=${{ inputs.image-name }}
         export INPUT_TAG=$TAG
         export INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
         export INPUT_FLAG_PUSH=${{ inputs.push }}
-        chmod +x $GITHUB_ACTION_PATH/build.sh
         $GITHUB_ACTION_PATH/build.sh
       shell: bash
 
