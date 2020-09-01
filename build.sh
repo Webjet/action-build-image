@@ -59,12 +59,12 @@ main(){
     # Build
     echo "[INFO] BUILD COMMAND: docker build ${BUILDPARAMS} ${BUILD_TAGS}"
     docker build ${BUILDPARAMS} ${BUILD_TAGS}
-    echo "[SUCCESS] Built: ${INPUT_REGISTRY}/${INPUT_REGISTRY_SUBPATH}/${INPUT_IMAGENAME}:${INPUT_TAG}"
+    echo "[SUCCESS] Built: ${INPUT_REGISTRY}/${INPUT_REPOSITORY}/${INPUT_IMAGENAME}:${INPUT_TAG}"
 
     # Push
     echo "[INFO] CHECK PUSH FLAG: ${INPUT_FLAG_PUSH}"
     if usesBoolean "${INPUT_FLAG_PUSH}"; then
-        PUSH_BODY="${INPUT_REGISTRY}/${INPUT_REGISTRY_SUBPATH}/${INPUT_IMAGENAME}:${INPUT_TAG}"
+        PUSH_BODY="${INPUT_REGISTRY}/${INPUT_REPOSITORY}/${INPUT_IMAGENAME}:${INPUT_TAG}"
         echo "[INFO] PUSH IMAGE : docker push ${PUSH_BODY}"
         docker push ${PUSH_BODY}
     fi

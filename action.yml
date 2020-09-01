@@ -6,10 +6,10 @@ inputs:
     description: 'docker registry'
     required: true
     default: $CONTAINERREGISTRY
-  registry-subpath:
-    description: 'registry subpath'
+  repository:
+    description: 'repository'
     required: true  
-    default: $REGISTRY_SUBPATH
+    default: $REPOSITORY
   image-name:
     description: 'docker image name'
     required: true
@@ -36,7 +36,7 @@ runs:
         export INPUT_TAG=$TAG
         export INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
         export INPUT_FLAG_PUSH=${{ inputs.push }}
-        export INPUT_REGISTRY_SUBPATH=${{ inputs.registry-subpath }}
+        export INPUT_REPOSITORY=${{ inputs.repository }}
         $GITHUB_ACTION_PATH/build.sh
       shell: bash
 
