@@ -13,6 +13,7 @@ inputs:
   image-name:
     description: 'docker image name'
     required: true
+    default: $IMAGENAME
   build-args:
     description: 'docker build args'
     required: false
