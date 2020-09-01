@@ -43,7 +43,7 @@ main(){
     BUILDPARAMS="--build-arg REGISTRY=${INPUT_REGISTRY}"
 
     sanitize "${INPUT_IMAGENAME}" "Image Name"
-    sanitize "${INPUT_REGISTRY_SUBPATH}" "REGISTRY SUBPATH"
+    sanitize "${INPUT_REPOSITORY}" "Repository"
 
     # Check PATH
     if uses "${INPUT_DOCKERFILED_PATH}"; then
