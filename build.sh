@@ -37,6 +37,10 @@ usesBoolean() {
   [ ! -z "${1}" ] && [ "${1}" = "true" ]
 }
 
+addTarget() {
+  BUILDPARAMS="${BUILDPARAMS} --target ${INPUT_TARGET}"
+}
+
 #### MAIN
 main(){
     echo "[INFO] INPUT: $INPUT_REGISTRY;$INPUT_BUILDARGS;$INPUT_IMAGENAME;$INPUT_TAG;$INPUT_DOCKERFILED_PATH;$INPUT_FLAG_PUSH"
@@ -48,6 +52,11 @@ main(){
     # Check PATH
     if uses "${INPUT_DOCKERFILED_PATH}"; then
         useCustomDockerfile
+    fi
+    
+    # Check Target
+    if uses "${INPUT_TARGET}"; then
+        addTarget
     fi
 
     # Add Args

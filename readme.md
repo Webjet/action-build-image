@@ -19,6 +19,7 @@ This action can be used to build & push docker image
     build-args: 'region=au,arg2=test'
     dockerfile-path: 'src/dockerfile'
     push: 'true'
+    target: 'test'
 
 ### build-args (no space)
 ### dockerfile-path (if your dockerfile not in root path)
