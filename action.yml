@@ -24,6 +24,10 @@ inputs:
     description: 'also push image'
     required: true
     default: 'false'
+  target:
+    description: 'target'
+    required: false
+
 
 runs:
   using: "composite"
@@ -37,6 +41,7 @@ runs:
         export INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
         export INPUT_FLAG_PUSH=${{ inputs.push }}
         export INPUT_REPOSITORY=${{ inputs.repository }}
+        export INPUT_TARGET=${{ inputs.target }}
         $GITHUB_ACTION_PATH/build.sh
       shell: bash
 
