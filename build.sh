@@ -68,7 +68,9 @@ main(){
     # Build
     echo "[INFO] BUILD COMMAND: docker build ${BUILDPARAMS} ${BUILD_TAGS}"
     docker build ${BUILDPARAMS} ${BUILD_TAGS}
-    if [ $? -ne 0]; then
+    result_code=$?
+    echo $result_code
+    if [ $result_code -ne 0]; then
       echo "[ERROR] Build failed!! Code: $?"
       exit
     fi
