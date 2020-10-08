@@ -71,8 +71,8 @@ main(){
     result_code=$?
     echo "[INFO] response code: $result_code"
     if [ $result_code != 0 ]; then
-      echo "[ERROR] Build failed!! Code: $?"
-      exit
+      echo "[ERROR] Build failed!! Code: $result_code"
+      exit 1
     fi
     echo "[SUCCESS] Built: ${INPUT_REGISTRY}/${INPUT_REPOSITORY}/${INPUT_IMAGENAME}:${INPUT_TAG}"
 
@@ -83,9 +83,10 @@ main(){
         echo "[INFO] PUSH IMAGE : docker push ${PUSH_BODY}"
         docker push ${PUSH_BODY}
         result_code=$?
+        echo "[INFO] response code: $result_code"
         if [ $result_code != 0 ]; then
-          echo "[ERROR] Push failed!! Code: $?"
-          exit
+          echo "[ERROR] Push failed!! Code: $result_code"
+          exit 1
         fi
     fi
 
