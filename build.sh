@@ -68,9 +68,11 @@ main(){
     # Build
     echo "[INFO] BUILD COMMAND: docker build ${BUILDPARAMS} ${BUILD_TAGS}"
     docker build ${BUILDPARAMS} ${BUILD_TAGS}
-    if [ $? -eq 1]; then
-      echo "[ERROR] Build failed!!"
-      exit
+    result_code=$?
+    echo "[INFO] response code: $result_code"
+    if [ $result_code != 0 ]; then
+      echo "[ERROR] Build failed!! Code: $result_code"
+      exit 1
     fi
     echo "[SUCCESS] Built: ${INPUT_REGISTRY}/${INPUT_REPOSITORY}/${INPUT_IMAGENAME}:${INPUT_TAG}"
 
@@ -80,9 +82,11 @@ main(){
         PUSH_BODY="${INPUT_REGISTRY}/${INPUT_REPOSITORY}/${INPUT_IMAGENAME}:${INPUT_TAG}"
         echo "[INFO] PUSH IMAGE : docker push ${PUSH_BODY}"
         docker push ${PUSH_BODY}
-        if [ $? -eq 1]; then
-          echo "[ERROR] Push failed!!"
-          exit
+        result_code=$?
+        echo "[INFO] response code: $result_code"
+        if [ $result_code != 0 ]; then
+          echo "[ERROR] Push failed!! Code: $result_code"
+          exit 1
         fi
     fi
 
