@@ -36,7 +36,7 @@ runs:
         export INPUT_REGISTRY=${{ inputs.registry }}
         export INPUT_BUILDARGS=${{ inputs.build-args }}
         export INPUT_IMAGENAME=${{ inputs.image-name }}
-        echo "::set-env name=IMAGENAME::$INPUT_IMAGENAME"
+        echo "IMAGENAME=$INPUT_IMAGENAME" >> $GITHUB_ENV
         export INPUT_TAG=$TAG
         export INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
         export INPUT_FLAG_PUSH=${{ inputs.push }}
