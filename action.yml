@@ -14,6 +14,10 @@ inputs:
     description: 'docker image name'
     required: true
     default: $IMAGENAME
+  tag:
+    description: 'docker image tag'
+    required: true
+    default: $TAG    
   build-args:
     description: 'docker build args'
     required: false
@@ -37,7 +41,7 @@ runs:
         export INPUT_BUILDARGS=${{ inputs.build-args }}
         export INPUT_IMAGENAME=${{ inputs.image-name }}
         echo "IMAGENAME=$INPUT_IMAGENAME" >> $GITHUB_ENV
-        export INPUT_TAG=$TAG
+        export INPUT_TAG=${{ inputs.tag }}
         export INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
         export INPUT_FLAG_PUSH=${{ inputs.push }}
         export INPUT_REPOSITORY=${{ inputs.repository }}
