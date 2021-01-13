@@ -16,6 +16,7 @@ This action can be used to build & push docker image
 - uses: webjet/action-build-image@v1
   with:
     image-name: 'flight-xxx'
+    tag: 'v1'
     build-args: 'region=au,arg2=test'
     dockerfile-path: 'src/dockerfile'
     push: 'true'
