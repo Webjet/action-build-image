@@ -44,7 +44,7 @@ addTarget() {
 #### MAIN
 main(){
     echo "[INFO] INPUT: $INPUT_REGISTRY;$INPUT_BUILDARGS;$INPUT_IMAGENAME;$INPUT_TAG;$INPUT_DOCKERFILED_PATH;$INPUT_FLAG_PUSH"
-    BUILDPARAMS="--build-arg REGISTRY=${INPUT_REGISTRY}"
+    BUILDPARAMS="--build-arg REGISTRY=${INPUT_REGISTRY} --build-arg REPOSITORY=${INPUT_REPOSITORY}"
 
     sanitize "${INPUT_IMAGENAME}" "Image Name"
     sanitize "${INPUT_REPOSITORY}" "Repository"
@@ -63,7 +63,7 @@ main(){
     addBuildArgs
 
     # ImageName & Tag
-    BUILD_TAGS=" . -t ${INPUT_REGISTRY}/webjet/${INPUT_IMAGENAME}:${INPUT_TAG} "
+    BUILD_TAGS=" . -t ${INPUT_REGISTRY}/${INPUT_REPOSITORY}/${INPUT_IMAGENAME}:${INPUT_TAG} "
 
     # Build
     echo "[INFO] BUILD COMMAND: docker build ${BUILDPARAMS} ${BUILD_TAGS}"
